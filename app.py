@@ -1,6 +1,8 @@
 from flask import Flask, render_template, make_response
 from pymongo import MongoClient
-import json
+import json 
+from flask_graphql import GraphQLView
+from schema import schema
 
 
 app = Flask(__name__)
@@ -49,6 +51,16 @@ def get_user(user_id: str):
         if document['_id'] == user_id:
             entries.append(document)
     return json.dumps(entries)
+
+# graphql
+app.add_url_rule(
+        '/graphql',
+        view_func=GraphQLView.as_view(
+            'graphql',
+            schema=schema,
+            graphiql=True   # for having the GraphiQL interface
+        )
+    )
 
 
 if __name__ == '__main__':
