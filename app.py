@@ -4,10 +4,8 @@ import json
 
 
 app = Flask(__name__)
-# named after docker container folder
-client = MongoClient('mongodb://survey_tool_db_1:27017')
 # for local testing use of venv is recommended
-# client: MongoClient = MongoClient("localhost:27017")
+client: MongoClient = MongoClient("localhost:27017")
 db = client.user
 
 """

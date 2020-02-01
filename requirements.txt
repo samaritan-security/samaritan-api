@@ -1,0 +1,9 @@
+flask==1.0.2
+pymongo
+pytest
+requests
+
+cmake
+opencv-python
+numpy
+face-recognition
