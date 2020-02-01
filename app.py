@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, make_response, redirect
+from flask import Flask, render_template, make_response
 from pymongo import MongoClient
 import json
 
@@ -31,7 +31,7 @@ def survey():
 
 
 @app.route('/allUsers', methods=['GET'])
-def get_surveys():
+def get_users():
     entries = []
     cursor = db.user.find({})
     for document in cursor:
@@ -41,7 +41,7 @@ def get_surveys():
 
 # needs to be fixed
 @app.route('/user/<user_id>', methods=['GET'])
-def get_survey(user_id: str):
+def get_user(user_id: str):
     entries = []
     cursor = db.survey.find({})
     for document in cursor:
