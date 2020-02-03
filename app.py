@@ -22,7 +22,7 @@ def index():
 
 
 """
-adds new user to db
+adds new user 
 """
 @app.route('/user', methods=['POST'])
 def user():
@@ -38,15 +38,8 @@ def user():
     return make_response()
 
 
-# """
-
-# """
-# @app.route('/', methods=['POST'])
-# def
-
-
 """
-returns all users in db
+returns all users 
 """
 @app.route('/allUsers', methods=['GET'])
 def get_users():
@@ -58,17 +51,12 @@ def get_users():
 
     return json.dumps(entries)
 
-# needs to be fixed
+
+"""
+given user_id, returns user 
+"""
 @app.route('/user/<user_id>', methods=['GET'])
 def get_user(user_id: str):
-    # entries = []
-    # cursor = db.survey.find({})
-    # for document in cursor:
-    #     document['_id'] = str(document['_id'])
-    #     if document['_id'] == user_id:
-    #         entries.append(document)
-    # return json.dumps(entries)
-    print(user_id)
     user = db.user.find_one({"_id": ObjectId(user_id)})
     user.pop('_id')
     return json.dumps(user)
