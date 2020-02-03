@@ -1,6 +1,10 @@
 # app/schema.py
 
 from graphene import ObjectType, String, Schema
+from pymongo import MongoClient
+
+client: MongoClient = MongoClient("localhost:27017")
+db = client.user
 
 
 class Query(ObjectType):
