@@ -5,12 +5,13 @@ from flask_graphql import GraphQLView
 from schema import schema
 import datetime
 from bson.objectid import ObjectId
+from mongoengine import connect
 
 
 app = Flask(__name__)
-# for local testing use of venv is recommended
 client: MongoClient = MongoClient("localhost:27017")
-db = client.user
+db = client.user  # need for non graphql routes that access db
+DEFAULT_CONNECTION_NAME = connect('user')  # need this for graphql
 
 """
 initial endpoint for sample application 
