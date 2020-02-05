@@ -1,23 +1,21 @@
-# app/schema.py
-
 from graphene import ObjectType, Schema, Field
-from graphene_mongo import MongoengineObjectType, MongoengineConnectionField
+from graphene_mongo import MongoengineConnectionField
 from graphene.relay import Node
 
-from models import User as UserModel
-
-
-class User(MongoengineObjectType):
-
-    class Meta:
-        model = UserModel
-        interfaces = (Node,)
+from schemas.user import User as UserSchema
+from mutations.user import UserMutation
 
 
 class Query(ObjectType):
     node = Node.Field()
-    all_users = MongoengineConnectionField(User)
-    user = Field(User)
+    all_users = MongoengineConnectionField(UserSchema)
+    user = Field(UserSchema)
 
 
-schema = Schema(query=Query, types=[User])
+class Mutation(ObjectType):
+    add_user = UserMutation.Field()
+    delete_user = UserMutation.Field()
+    update_user = UserMutation.Field()
+
+
+schema = Schema(query=Query, types=[UserSchema], mutation=Mutation)
