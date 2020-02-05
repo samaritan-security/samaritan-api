@@ -2,10 +2,10 @@ bson
 mongoengine
 flask==1.0.2
 Flask-GraphQL==2.0.0
-graphene
-graphene-mongo
+graphql-core==2.2.1
+graphene==2.1.8
+graphene-mongo==0.2.9
 pymongo
-pytest
 requests
 
 cmake==3.15.3
