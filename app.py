@@ -40,6 +40,13 @@ def user():
 
 
 """
+removes new user 
+"""
+# @app.route('/user', methods=['DELETE'])
+# def user():
+#     # TODO :)
+
+"""
 returns all users 
 """
 @app.route('/allUsers', methods=['GET'])
